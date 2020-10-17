@@ -18,7 +18,6 @@ html {
   font-weight: 200;
   background: #222;
   color: #eee;
-  border-color: #595757;
 }
 
 *,
