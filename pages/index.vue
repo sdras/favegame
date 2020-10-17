@@ -1,50 +1,15 @@
 <template>
   <div class="container">
-    {{ $data }}
+    {{ favoriteGames }}
   </div>
 </template>
 
 <script>
-import gql from "graphql-tag";
+import { mapState } from "vuex";
 
 export default {
-  apollo: {
-    favoriteGames: {
-      query: gql`
-        query MyQuery {
-          favoriteGames {
-            id
-            image
-            name
-            rating
-            gameUser {
-              id
-              name
-              profileImg
-            }
-          }
-        }
-      `,
-      update(data) {
-        return data.favoriteGames;
-      }
-    }
-  },
-  methods: {
-    remove(game) {
-      this.$apollo.mutate({
-        mutation: gql`
-          mutation removeMovie($id: Int!) {
-            delete_favoriteGames(where: { id: { _eq: $id } }) {
-              affected_rows
-            }
-          }
-        `,
-        variables: {
-          id: favoriteGames.id
-        }
-      });
-    }
+  computed: {
+    ...mapState(["favoriteGames"])
   }
 };
 </script>
