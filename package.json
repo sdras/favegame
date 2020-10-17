@@ -12,7 +12,9 @@
     "@nuxtjs/apollo": "^4.0.1-rc.3",
     "core-js": "^3.6.5",
     "graphql-tag": "^2.11.0",
-    "nuxt": "^2.14.6"
+    "node-sass": "^4.14.1",
+    "nuxt": "^2.14.6",
+    "sass-loader": "^10.0.3"
   },
   "devDependencies": {}
 }
