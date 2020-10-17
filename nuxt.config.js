@@ -28,6 +28,14 @@ export default {
   // Modules (https://go.nuxtjs.dev/config-modules)
   modules: ["@nuxtjs/apollo"],
 
+  apollo: {
+    clientConfigs: {
+      default: {
+        httpEndpoint: process.env.HASURA_ENDPOINT
+      }
+    }
+  },
+
   // Build Configuration (https://go.nuxtjs.dev/config-build)
   build: {}
 };

@@ -1,34 +1,52 @@
 <template>
   <div class="container">
-    <div>
-      <Logo />
-      <h1 class="title">
-        favegame
-      </h1>
-      <div class="links">
-        <a
-          href="https://nuxtjs.org/"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="button--green"
-        >
-          Documentation
-        </a>
-        <a
-          href="https://github.com/nuxt/nuxt.js"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="button--grey"
-        >
-          GitHub
-        </a>
-      </div>
-    </div>
+    {{ $data }}
   </div>
 </template>
 
 <script>
-export default {}
+import gql from "graphql-tag";
+
+export default {
+  apollo: {
+    favoriteGames: {
+      query: gql`
+        query MyQuery {
+          favoriteGames {
+            id
+            image
+            name
+            rating
+            gameUser {
+              id
+              name
+              profileImg
+            }
+          }
+        }
+      `,
+      update(data) {
+        return data.favoriteGames;
+      }
+    }
+  },
+  methods: {
+    remove(game) {
+      this.$apollo.mutate({
+        mutation: gql`
+          mutation removeMovie($id: Int!) {
+            delete_favoriteGames(where: { id: { _eq: $id } }) {
+              affected_rows
+            }
+          }
+        `,
+        variables: {
+          id: favoriteGames.id
+        }
+      });
+    }
+  }
+};
 </script>
 
 <style>
@@ -42,16 +60,8 @@ export default {}
 }
 
 .title {
-  font-family:
-    'Quicksand',
-    'Source Sans Pro',
-    -apple-system,
-    BlinkMacSystemFont,
-    'Segoe UI',
-    Roboto,
-    'Helvetica Neue',
-    Arial,
-    sans-serif;
+  font-family: "Quicksand", "Source Sans Pro", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   display: block;
   font-weight: 300;
   font-size: 100px;
