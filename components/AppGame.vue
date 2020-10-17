@@ -13,10 +13,10 @@
       <div v-if="game.gameUser.length">
         <hr />
 
-        <h3>Active Users</h3>
+        <p><strong>Active Users</strong></p>
         <div v-for="user in game.gameUser" :key="user.id">
           <p>{{ user.name }}</p>
-          <img :src="`/${user.profileImg}`" width="50" />
+          <img :src="`/${user.profileImg}`" width="40" class="user" />
         </div>
       </div>
     </div>
@@ -46,5 +46,15 @@ export default {
 
 .star {
   color: yellow;
+}
+
+hr {
+  border-color: #595757;
+  margin: 10px;
+}
+
+.user {
+  border-radius: 1000px;
+  margin-top: 10px;
 }
 </style>
