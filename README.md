@@ -1,4 +1,8 @@
-# favegame
+# FaveGame: Nuxt, Hasura, and Netlify
+
+[Article walkthrough here](https://netlify.com/blog/2020/10/26/graphql-with-hasura-and-nuxt/)
+
+[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/sdras/favegame/?utm_source=github&utm_medium=favegame-sd&utm_campaign=devex)
 
 ## Build Setup
 
